@@ -1,21 +1,54 @@
-import '../assets/styles.css'
+import '../assets/styles.scss'
+import { getCardInfo } from '~contents/query';
+import { words } from '~contents/marking';
 
-// Create the hover popup element
+const cards = {}
+
 const popup = document.createElement('div');
+popup.classList.add('text-hover-popup');
+popup.tabIndex = -1;  // This makes it focusable,
 let isShiftPressed = false;
 
 let hoveredElement = null;
-popup.classList.add('text-hover-popup');
-popup.style.position = 'absolute';
-popup.style.backgroundColor = '#fff';
-popup.style.border = '1px solid #000';
-popup.style.color = 'red';
-popup.style.padding = '5px';
-popup.style.display = 'none';
-popup.style.zIndex = '100000';
-popup.tabIndex = -1;  // This makes it focusable, but not reachable via sequential keyboard navigation.
+
+function adjustPopupPosition(target, popup) {
+  const rect = target.getBoundingClientRect();
+  const popupWidth = 200;  // As specified in your updated CSS
+  const popupHeight = 250; // As specified in your updated CSS
+
+  // Vertical Adjustment
+  const spaceBelow = window.innerHeight - rect.bottom;
+  const spaceAbove = rect.top;
+
+  if (spaceBelow < popupHeight) { // not enough space below
+    if (spaceAbove > spaceBelow) { // more space above than below
+      // Position the popup above the target
+      popup.style.top = `${rect.top - popupHeight + window.scrollY}px`;
+    }
+  } else {
+    // Position the popup below the target
+    popup.style.top = `${rect.bottom + window.scrollY}px`;
+  }
+
+  // Horizontal adjustment to center
+  const centeredLeftPosition = rect.left + (rect.width / 2) - (popupWidth / 2);
+
+  if (centeredLeftPosition < 0) {
+    popup.style.left = '0px';
+  } else if (centeredLeftPosition + popupWidth > window.innerWidth) {
+    popup.style.left = `${window.innerWidth - popupWidth}px`;
+  } else {
+    popup.style.left = `${centeredLeftPosition}px`;
+  }
+}
 
 document.body.appendChild(popup);
+
+(async () => {
+  for (const word of words) {
+    cards[word.toLowerCase()] = await getCardInfo(word)
+  }
+})()
 
 // Update the state of the Shift key
 document.addEventListener('keydown', (event) => {
@@ -37,19 +70,39 @@ document.addEventListener('keyup', (event) => {
 popup.addEventListener('blur', hidePopup);
 
 // Function to show the popup
-function showPopup(event) {
+async function showPopup(event) {
   if (!isShiftPressed) return; // Exit early if Shift is not pressed
 
   const target = event.target;
   if (target.classList.contains('marked-word') || target.closest('.marked-word')) {
-    popup.textContent = 'Your hover content here';
-    const rect = target.getBoundingClientRect();
-    popup.style.left = `${rect.left}px`;
-    popup.style.top = `${rect.bottom + window.scrollY}px`;
     popup.style.display = 'block';
+    popup.textContent = 'Loading...';
+
+    // 2. Position the popup
+    adjustPopupPosition(target, popup);
+
+    let card;
+    if (cards[target.innerText.toLowerCase()]) {
+      card = cards[target.innerText.toLowerCase()];
+    } else {
+      card = await getCardInfo(target.innerText);
+      cards[target.innerText.toLowerCase()] = card;
+    }
+
+    popup.innerHTML = `
+      Name: ${card.name} <br>
+      Card Type: ${card.gameData.cardType} <br>
+      Subtype: ${card.gameData.subtype || 'none'} <br>
+      Cost: ${card.gameData.cost} <br>
+      Attack: ${card.gameData.attack} <br>
+      Health: ${card.gameData.health} <br>
+      Function: ${card.gameData.functionText} <br>
+      <img src="${card.media.image}" alt="${card.name}" />
+    `;
+
+    adjustPopupPosition(target, popup);
 
     popup.focus();  // Focus the popup so it can receive the blur event
-
   }
 }
 

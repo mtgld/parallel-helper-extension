@@ -1,4 +1,4 @@
-import '../assets/styles.css'
+import '../assets/styles.scss'
 
 function traverseAndMark(node, words) {
   const wordSet = new Set(words.map(word => word.toLowerCase())); // Convert to a set for easier lookup
@@ -35,7 +35,7 @@ function traverseAndMark(node, words) {
   }
 }
 // List of words you want to search for
-const words = ['mind twister', 'annihilate', 'backup copy', 'life stream', 'augencore', 'collateral', 'generator'];
+export const words = ['mind twister', 'annihilate', 'backup copy', 'life stream', 'augencore', 'collateral damage', 'generator'];
 
 traverseAndMark(document.body, words);
 

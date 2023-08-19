@@ -1,0 +1,26 @@
+.marked-word {
+    color: red;
+}
+
+.text-hover-popup {
+    position: absolute;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    color: red;
+    display: none;
+    font-size: 12px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    z-index: 10000;
+    width: 200px; /* adjust this to your needs */
+    height: 250px; /* adjust this to your needs */
+    overflow-y: scroll;
+
+    img {
+        max-height: 150px;
+    }
+}
+
+.text-hover-popup:focus {
+    outline: none;
+}
