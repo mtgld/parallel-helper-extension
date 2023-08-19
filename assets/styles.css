@@ -1,0 +1,14 @@
+.marked-word {
+    color: red;
+}
+
+.text-hover-popup {
+    position: absolute;
+    background-color: #fff;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    z-index: 10000; /* Ensure it appears above most page content */
+    max-width: 300px; /* Optional: to ensure the popup doesn't get too wide */
+}
