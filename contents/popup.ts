@@ -4,32 +4,14 @@ import { getCardInfo } from '~contents/query';
 
 const cards = {}
 
-// Create shadow host and append to body
-// const shadowHost = document.createElement('div');
-// document.body.appendChild(shadowHost);
-
-// Attach shadow root to host
-// const shadowRoot = shadowHost.attachShadow({ mode: 'open' });
-
-// const styleLink = document.createElement('link');
-// styleLink.setAttribute('rel', 'stylesheet');
-// styleLink.setAttribute('href', './marking.c6bb49ff.css');
-// shadowRoot.appendChild(styleLink);
-
 const popup = document.createElement('div');
 popup.classList.add('card-popup');
 popup.tabIndex = -1;
 
-// shadowRoot.appendChild(popup);
 document.body.appendChild(popup);
 
 let isShiftPressed = false;
 let hoveredElement = null;
-
-// setTimeout(() => {
-//   const elem = document.querySelector('.marked-word')
-//   showPopup({target: elem})
-// }, 1000)
 
 function adjustPopupPosition(target, popup) {
   const rect = target.getBoundingClientRect();
@@ -157,7 +139,7 @@ async function showPopup(event) {
     popup.innerHTML = `
       <div class="card-container">
         <span class="card-name">
-          <a target="_blank" href="https://parallel.life/cards/${card.tokenId}/">
+          <a id="link" target="_blank" href="https://parallel.life/cards/${card.tokenId}/">
             ${card.name}
           </a>
         </span>
@@ -184,8 +166,12 @@ document.addEventListener('mousemove', (event) => {
   hoveredElement = event.target;
 });
 
-function hidePopup() {
-  popup.style.display = 'none';
+function hidePopup(event) {
+  console.log(event)
+  const link = document.getElementById('link')
+  if (event.relatedTarget !== link) {
+    popup.style.display = 'none';
+  }
 }
 
 document.addEventListener('mouseover', showPopup);
