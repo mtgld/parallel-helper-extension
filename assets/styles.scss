@@ -2,25 +2,158 @@
     color: red;
 }
 
-.text-hover-popup {
-    position: absolute;
-    background-color: #fff;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    color: red;
-    display: none;
+.card-popup {
+    font-family: 'ChakraPetch', sans-serif;
     font-size: 12px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-    z-index: 10000;
-    width: 200px; /* adjust this to your needs */
-    height: 250px; /* adjust this to your needs */
-    overflow-y: scroll;
 
-    img {
-        max-height: 150px;
-    }
+    display: none;
+    position: absolute;
+
+    overflow: hidden;
+
+    width: 201.5px;
+    height: 305.5px;
+
+    color: white;
+
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    z-index: 10000;
 }
 
-.text-hover-popup:focus {
+.card-stats {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.card-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    height: 100%;
+
+    padding: 10px 15px;
+}
+
+.card-desc {
+    text-align: center;
+
+    align-self: center;
+
+    font-size: 16px;
+}
+
+.card-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.card-name {
+    text-align: center;
+    font-weight: bold;
+    font-size: 18px;
+
+    cursor: pointer;
+}
+
+.card-popup:focus {
     outline: none;
+}
+
+.card-popup::before,
+.card-popup::after,
+.card-popup > div::before,
+.card-popup > div::after {
+    content: "";
+    position: absolute;
+    border: 1px solid grey; /* adjust the border size and color */
+    width: 10px; /* length of the corner border */
+    height: 10px;
+}
+
+/* Top left corner */
+.card-popup::before {
+    top: 0;
+    left: 0;
+    border-bottom: none;
+    border-right: none;
+}
+
+/* Top right corner */
+.card-popup::after {
+    top: 0;
+    right: 0;
+    border-bottom: none;
+    border-left: none;
+}
+
+/* Bottom left corner */
+.card-popup > div::before {
+    bottom: 0;
+    left: 0;
+    border-top: none;
+    border-right: none;
+}
+
+/* Bottom right corner */
+.card-popup > div::after {
+    bottom: 0;
+    right: 0;
+    border-top: none;
+    border-left: none;
+}
+
+.card-stat-text {
+    color: hsla(0, 0%, 100%, .7);
+    font-size: 10px;
+}
+
+.card-stat-value {
+    font-size: 15px;
+}
+
+.card-name > a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.card-name > a:hover {
+    text-decoration: underline;
+}
+
+.loading-container {
+    height: 100%;
+    overflow: hidden;
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
+
+    .loading {
+        position: absolute;
+        font-size: 30px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    //img {
+    //    width: 100%;
+    //    height: 100%;
+    //    object-fit: contain;
+    //
+    //    padding: 75px;
+    //}
+}
+
+.bg-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -1;
+    transform: translate(-50%, -50%) scaleY(1.3); /* center the video */
 }

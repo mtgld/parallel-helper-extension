@@ -6,6 +6,7 @@ const query = `query ($phrase: String!) {
   ) {
     results {
       name
+      tokenId
       media {
         image
       }

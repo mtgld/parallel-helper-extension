@@ -1,6 +1,6 @@
 import '../assets/styles.scss'
 
-function traverseAndMark(node, words) {
+function traverseDOMAndMark(node, words) {
   const wordSet = new Set(words.map(word => word.toLowerCase())); // Convert to a set for easier lookup
 
   if (node.nodeType === Node.TEXT_NODE) {  // Text node
@@ -18,7 +18,7 @@ function traverseAndMark(node, words) {
       return;
     }
     for (let child of node.childNodes) {
-      traverseAndMark(child, words);
+      traverseDOMAndMark(child, words);
     }
 
     if (!node.classList.contains('marked-word')) {  // If the element or its children aren't already marked
@@ -35,9 +35,9 @@ function traverseAndMark(node, words) {
   }
 }
 // List of words you want to search for
-export const words = ['mind twister', 'annihilate', 'backup copy', 'life stream', 'augencore', 'collateral damage', 'generator'];
+export const words = ['subjugate', 'mind twister', 'annihilate', 'backup copy', 'life stream', 'augencore', 'collateral damage', 'generator'];
 
-traverseAndMark(document.body, words);
+traverseDOMAndMark(document.body, words);
 
 const observer = new MutationObserver((mutationsList) => {
   for(let mutation of mutationsList) {
@@ -46,7 +46,7 @@ const observer = new MutationObserver((mutationsList) => {
       mutation.addedNodes.length > 0
       && mutation.addedNodes[0].nodeType === Node.ELEMENT_NODE
     ) {
-      traverseAndMark(mutation.addedNodes[0], words);
+      traverseDOMAndMark(mutation.addedNodes[0], words);
     }
   }
 });
