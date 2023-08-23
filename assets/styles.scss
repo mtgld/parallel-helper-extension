@@ -1,7 +1,3 @@
-.marked-word {
-    color: red;
-}
-
 .card-popup {
     font-family: 'ChakraPetch', sans-serif;
     font-size: 12px;
@@ -70,12 +66,11 @@
 .card-popup > div::after {
     content: "";
     position: absolute;
-    border: 1px solid grey; /* adjust the border size and color */
-    width: 10px; /* length of the corner border */
+    border: 1px solid grey;
+    width: 10px;
     height: 10px;
 }
 
-/* Top left corner */
 .card-popup::before {
     top: 0;
     left: 0;
@@ -91,7 +86,6 @@
     border-left: none;
 }
 
-/* Bottom left corner */
 .card-popup > div::before {
     bottom: 0;
     left: 0;
@@ -99,7 +93,6 @@
     border-right: none;
 }
 
-/* Bottom right corner */
 .card-popup > div::after {
     bottom: 0;
     right: 0;
@@ -123,37 +116,4 @@
 
 .card-name > a:hover {
     text-decoration: underline;
-}
-
-.loading-container {
-    height: 100%;
-    overflow: hidden;
-    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
-
-    .loading {
-        position: absolute;
-        font-size: 30px;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-    }
-    //img {
-    //    width: 100%;
-    //    height: 100%;
-    //    object-fit: contain;
-    //
-    //    padding: 75px;
-    //}
-}
-
-.bg-video {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    min-width: 100%;
-    min-height: 100%;
-    width: auto;
-    height: auto;
-    z-index: -1;
-    transform: translate(-50%, -50%) scaleY(1.3); /* center the video */
 }
