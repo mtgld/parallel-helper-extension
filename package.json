@@ -1,7 +1,7 @@
 {
   "name": "parallel-cards-helper",
   "displayName": "Parallel Cards Helper",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "The extension provides information about Parallel TCG cards when the cursor hovers over the card name on specific websites.",
   "author": "Metaguild",
   "scripts": {
