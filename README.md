@@ -1,8 +1,28 @@
-This is a [Plasmo extension](https://docs.plasmo.com/) project bootstrapped with [`plasmo init`](https://www.npmjs.com/package/plasmo).
+# Parallel Cards Helper
 
-## Getting Started
+A browser extension that instantly provides detailed information about Parallel TCG cards. Simply hover over the card name on supported websites, and you'll have all the details right at your fingertips.
 
-First, run the development server:
+## Features
+- Immediate card details when hovering over Parallel TCG card names on specific websites.
+- Intuitive user interaction: hold down the Shift key while hovering or press the Shift key after hovering over the card name.
+
+## How to Use
+
+1. Install the extension from [extension store link here].
+2. Navigate to one of the supported websites.
+3. To see card details, hover over the card name and:
+    - Hold down the `Shift` key simultaneously.
+    - OR hover over the text first and then press the `Shift` key.
+
+## Getting Started for Developers
+
+If you're interested in contributing or running the extension locally, follow the steps below:
+
+### Prerequisites
+
+Ensure you have `pnpm` (or `npm`) installed.
+
+### Running the Development Server
 
 ```bash
 pnpm dev
@@ -10,15 +30,7 @@ pnpm dev
 npm run dev
 ```
 
-Open your browser and load the appropriate development build. For example, if you are developing for the chrome browser, using manifest v3, use: `build/chrome-mv3-dev`.
-
-You can start editing the popup by modifying `card-stats.tsx`. It should auto-update as you make changes. To add an options page, simply add a `options.tsx` file to the root of the project, with a react component default exported. Likewise to add a content page, add a `fetchCards.ts` file to the root of the project, importing some module and do some logic, then reload the extension on your browser.
-
-For further guidance, [visit our Documentation](https://docs.plasmo.com/)
-
-## Making production build
-
-Run the following:
+### Making Production Build
 
 ```bash
 pnpm build
@@ -26,8 +38,14 @@ pnpm build
 npm run build
 ```
 
-This should create a production bundle for your extension, ready to be zipped and published to the stores.
+## Contribute
 
-## Submit to the webstores
+We welcome contributions from the community. Whether you have suggestions, bug reports, or want to add a feature, feel free to fork this repository and create a pull request.
 
-The easiest way to deploy your Plasmo extension is to use the built-in [bpp](https://bpp.browser.market) GitHub action. Prior to using this action however, make sure to build your extension and upload the first version to the store to establish the basic credentials. Then, simply follow [this setup instruction](https://docs.plasmo.com/framework/workflows/submit) and you should be on your way for automated submission!
+## Support
+
+For issues or inquiries related to the extension, create an issue on this repository or reach out via [Discord](https://discord.gg/Metaguild).
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE.md file for details.
