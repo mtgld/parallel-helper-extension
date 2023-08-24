@@ -1,15 +1,16 @@
 {
-  "name": "parallel-extension",
-  "displayName": "Parallel extension",
+  "name": "parallel-cards-helper",
+  "displayName": "Parallel Cards Helper",
   "version": "0.0.1",
-  "description": "parallel-extension",
-  "author": "Dmitrii N",
+  "description": "The extension provides information about Parallel TCG cards when the cursor hovers over the card name on specific websites.",
+  "author": "Metaguild",
   "scripts": {
     "dev": "plasmo dev",
     "build": "plasmo build",
     "test": "plasmo test"
   },
   "dependencies": {
+    "@plasmohq/storage": "^1.7.2",
     "plasmo": "0.82.1",
     "react": "18.2.0",
     "react-dom": "18.2.0"
