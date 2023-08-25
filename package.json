@@ -26,7 +26,21 @@
   },
   "manifest": {
     "host_permissions": [
-      "https://*/*"
+      "https://opensea.io/*",
+      "https://sudoswap.xyz/*",
+      "https://parallel.life/*",
+      "https://echelon.io/*",
+      "https://souq.finance/*",
+      "https://souq.gg/*",
+      "https://looksrare.org/*",
+      "https://blur.io/*",
+      "https://thepriming.io/*",
+      "https://rarible.com/*",
+      "https://pro.opensea.io/*"
+    ],
+    "permissions": [
+      "storage",
+      "activeTab"
     ]
   }
 }
