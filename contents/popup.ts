@@ -1,4 +1,4 @@
-import '../assets/styles.scss';
+import '~assets/card-popup.scss';
 import { adjustPopupPosition, getCardHTML, getImmediateText, isDescendant } from '~contents/utils';
 import { cardsMap } from '~contents/fetchCards';
 import { Storage } from "@plasmohq/storage"
@@ -7,6 +7,10 @@ const storage = new Storage();
 
 let toggleValue = true;
 (async () => {
+  const result = await storage.get("toggle")
+  if (result == undefined) {
+    await storage.set("toggle", "1")
+  }
   toggleValue = Boolean(Number(await storage.get("toggle")));
 })()
 

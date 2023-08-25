@@ -1,5 +1,5 @@
-import './assets/popup.scss';
-import './contents/font.css';
+import './style.css'
+import '~assets/index-popup.scss'
 import MetaguildLogoSrc from "data-base64:~assets/metaguild_logo.png"
 import { useStorage } from "@plasmohq/storage/hook"
 

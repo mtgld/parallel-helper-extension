@@ -1,4 +1,3 @@
-import '../assets/styles.scss'
 import { getAllCards } from '~contents/queries';
 import { Storage } from "@plasmohq/storage"
 
