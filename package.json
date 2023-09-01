@@ -39,8 +39,7 @@
       "https://pro.opensea.io/*"
     ],
     "permissions": [
-      "storage",
-      "activeTab"
+      "storage"
     ]
   }
 }
